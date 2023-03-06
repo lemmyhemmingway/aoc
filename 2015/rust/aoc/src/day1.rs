@@ -1,16 +1,6 @@
-use std::fs;
+use crate::utils::read_file;
 
-fn read_file(file_path: String) -> Vec<char>{
-    let contents = fs::read_to_string(file_path);
-    match contents {
-        Ok(value) => {
-            return value.chars().collect();
-        },
-        Err(_) => panic!("File not found"),
-    }
-
-}
-fn part1() {
+pub fn part1() {
     let contents = read_file(String::from("./input.txt"));
     let mut up = 0;
     let mut down = 0;
@@ -23,7 +13,7 @@ fn part1() {
     }
     println!("{}", up - down);
 }
-fn part2() {
+pub fn part2() {
     let content = read_file(String::from("./input.txt"));
     let mut position = 1;
     let mut counter = 0;
@@ -39,8 +29,4 @@ fn part2() {
             break
         }
     }
-}
-fn main() {
-    part2();
-    part1();
 }
